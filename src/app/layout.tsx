@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar></Navbar>
-        <div>Layout {state}</div>
-        <button onClick={() => setState(state + 1)}>Klik</button>
+        {/* <Navbar></Navbar> */}
+        {/* <div>Layout {state}</div> */}
+        {/* <button onClick={() => setState(state + 1)}>Klik</button> */}
         {children}
       </body>
     </html>
