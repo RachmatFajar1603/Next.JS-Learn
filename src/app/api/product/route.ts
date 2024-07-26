@@ -1,10 +1,11 @@
+import { retrieveData, retrieveDataById } from "@/lib/firebase/service";
 import { NextRequest, NextResponse } from "next/server";
 
 const data = [
   {
     id: 1,
     title: "Nike P-6000 premium",
-    price: 190900,
+    price: 1909000,
     image:
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/7b919979-3fce-4226-8884-53cdf099f7aa/p-6000-shoes-sbwFpl.png",
   },
@@ -42,7 +43,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (id) {
-    const detailProduct = data.find((item) => item.id === Number(id));
+    const detailProduct = await retrieveDataById("products", id);
     if (detailProduct) {
       return NextResponse.json({
         status: 200,
@@ -58,5 +59,7 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  return NextResponse.json({ status: 200, message: "success", data });
+  const products = await retrieveData("products");
+
+  return NextResponse.json({ status: 200, message: "success", data: products });
 }
