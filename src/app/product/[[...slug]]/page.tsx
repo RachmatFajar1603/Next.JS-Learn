@@ -3,9 +3,11 @@ import { error } from "console";
 type ProductPageProps = { params: { slug: string[] } };
 
 async function getData() {
-  // const res = await fetch("https://fakestoreapi.com/products");
+  // const res = await fetch("https://fakestoreapi.com/products", {
+  //   cache:"no-store"
+  // });
   const res = await fetch("http://localhost:3000/api/product", {
-    cache: "force-cache",
+    cache: "no-store",
     next:{
       tags:["products"],
       // revalidate: 30
