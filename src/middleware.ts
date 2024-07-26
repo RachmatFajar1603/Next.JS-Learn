@@ -1,8 +1,9 @@
+import { tree } from "next/dist/build/templates/app-page";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const isLogin = false;
+  const isLogin = true;
   if (!isLogin) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
