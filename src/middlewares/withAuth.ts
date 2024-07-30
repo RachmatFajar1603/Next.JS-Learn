@@ -5,7 +5,6 @@ import {
   NextRequest,
   NextResponse,
 } from "next/server";
-
 const onlyAdminPage = ["/dashboard"];
 const authPage = ["/login", "/register"];
 
